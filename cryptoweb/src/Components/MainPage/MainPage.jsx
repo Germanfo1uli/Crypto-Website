@@ -4,6 +4,7 @@ import Navbar from '../MoreComponents/Navbar';
 import Footer from '../MoreComponents/Footer';
 import AuthModal from '../AuthModal/AuthModal';
 import styles from './MainPage.module.css';
+import Market from "../Market/Market";
 
 const MainPage = () => {
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -143,7 +144,7 @@ const MainPage = () => {
                 </div>
             </section>
 
-            {/* CTA секция */}
+            <Market/>
             <section className={styles.cta}>
                 <div className={styles.ctaContainer}>
                     <h2 className={styles.ctaTitle}>Готовы начать свой путь в криптовалютах?</h2>
@@ -156,7 +157,7 @@ const MainPage = () => {
                 </div>
             </section>
 
-            {/* Футер */}
+
             <Footer />
 
             {/* Модальное окно авторизации */}
