@@ -1,0 +1,436 @@
+/* Модальное окно */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    overflow: hidden;
+}
+
+/* Декоративные элементы фона */
+.cryptoBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.cryptoIcon {
+    position: absolute;
+    color: rgba(255, 126, 0, 0.05);
+    font-size: 200px;
+    animation: float 20s infinite ease-in-out;
+}
+
+.cryptoIcon:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    font-size: 180px;
+    animation-delay: 0s;
+}
+
+.cryptoIcon:nth-child(2) {
+    top: 60%;
+    right: 10%;
+    font-size: 220px;
+    animation-delay: 2s;
+}
+
+.cryptoIcon:nth-child(3) {
+    bottom: 10%;
+    left: 30%;
+    font-size: 150px;
+    animation-delay: 4s;
+}
+
+.modalContent {
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    border: 1px solid #222;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(255, 126, 0, 0.1);
+    animation: slideUp 0.3s ease;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.modalContent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 30%, rgba(255, 126, 0, 0.1) 0%, rgba(255, 126, 0, 0) 70%);
+    z-index: -1;
+}
+
+.closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #b8b8b8;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.closeButton:hover {
+    color: #ff7e00;
+    background-color: rgba(255, 126, 0, 0.1);
+    border-color: rgba(255, 126, 0, 0.3);
+    transform: rotate(90deg);
+}
+
+.modalHeader {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.modalIconContainer {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 126, 0, 0.2), rgba(255, 126, 0, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.modalIconContainer::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 126, 0, 0.3);
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.modalIcon {
+    color: #ff7e00;
+    font-size: 32px;
+}
+
+.modalTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.modalSubtitle {
+    color: #b8b8b8;
+    font-size: 16px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputWithIcon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 15px;
+    color: #ff7e00;
+    font-size: 18px;
+    z-index: 1;
+}
+
+.formGroup input {
+    background-color: rgba(10, 10, 10, 0.7);
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 16px 15px 16px 45px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.formGroup input:focus {
+    outline: none;
+    border-color: #ff7e00;
+    box-shadow: 0 0 0 3px rgba(255, 126, 0, 0.2), 0 0 15px rgba(255, 126, 0, 0.1);
+    background-color: rgba(10, 10, 10, 0.9);
+}
+
+.formGroup input::placeholder {
+    color: #666;
+}
+
+.inputError {
+    border-color: #ff4d4d !important;
+    box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.2) !important;
+}
+
+.errorText {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.forgotPassword {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.forgotPasswordBtn {
+    background: none;
+    border: none;
+    color: #ff7e00;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.forgotPasswordBtn:hover {
+    color: #ff9a33;
+    text-decoration: underline;
+}
+
+.formActions {
+    margin-top: 10px;
+}
+
+.submitButton {
+    background: linear-gradient(90deg, #ff7e00, #ff9a33);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submitButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submitButton:hover::before {
+    left: 100%;
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 126, 0, 0.3);
+}
+
+.submitButton:active {
+    transform: translateY(0);
+}
+
+.submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btnIcon {
+    font-size: 14px;
+}
+
+.switchMode {
+    text-align: center;
+    margin-top: 25px;
+    color: #b8b8b8;
+    font-size: 14px;
+}
+
+.switchButton {
+    background: none;
+    border: none;
+    color: #ff7e00;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.switchButton:hover {
+    color: #ff9a33;
+    text-decoration: none;
+}
+
+/* Уведомление */
+.notification {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    width: 90%;
+    max-width: 350px;
+    animation: slideDown 0.5s ease;
+}
+
+.notificationContent {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.notificationIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.notificationText h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.notificationText p {
+    margin: 0;
+    font-size: 14px;
+    color: #b8b8b8;
+    line-height: 1.4;
+}
+
+.modalDecoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+}
+
+.decorationLine {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff7e00, transparent);
+}
+
+.decorationCircle {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff7e00;
+    box-shadow: 0 0 15px rgba(255, 126, 0, 0.7);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, -20px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}

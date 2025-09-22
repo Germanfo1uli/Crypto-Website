@@ -2,7 +2,7 @@ import React from 'react';
 import { FaBitcoin } from 'react-icons/fa';
 import styles from './Navbar.module.css';
 
-const Navbar = () => {
+const Navbar = ({ onLoginClick, onRegisterClick }) => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navContainer}>
@@ -30,8 +30,8 @@ const Navbar = () => {
                 </ul>
 
                 <div className={styles.navButtons}>
-                    <button className={styles.loginBtn}>Войти</button>
-                    <button className={styles.registerBtn}>Регистрация</button>
+                    <button className={styles.loginBtn} onClick={onLoginClick}>Войти</button>
+                    <button className={styles.registerBtn} onClick={onRegisterClick}>Регистрация</button>
                 </div>
             </div>
         </nav>
@@ -39,5 +39,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

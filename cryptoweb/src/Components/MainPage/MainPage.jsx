@@ -1,14 +1,34 @@
-import React from 'react';
-import { FaBitcoin, FaEthereum, FaChartLine, FaWallet, FaExchangeAlt, FaLock, FaRocket, FaShieldAlt, FaArrowRight } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaEthereum, FaChartLine, FaWallet, FaLock, FaRocket, FaShieldAlt, FaArrowRight, FaBitcoin } from 'react-icons/fa';
+import Navbar from '../MoreComponents/Navbar';
+import Footer from '../MoreComponents/Footer';
+import AuthModal from '../AuthModal/AuthModal';
 import styles from './MainPage.module.css';
-import Navbar from "../MoreComponents/Navbar";
-import Footer from "../MoreComponents/Footer";
-import Market from "../Market/Market";
 
 const MainPage = () => {
+    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+    const [authMode, setAuthMode] = useState('login'); // 'login' или 'register'
+
+    const openLoginModal = () => {
+        setAuthMode('login');
+        setIsAuthModalOpen(true);
+    };
+
+    const openRegisterModal = () => {
+        setAuthMode('register');
+        setIsAuthModalOpen(true);
+    };
+
+    const closeAuthModal = () => {
+        setIsAuthModalOpen(false);
+    };
+
     return (
         <div className={styles.container}>
-            <Navbar />
+            {/* Навигация */}
+            <Navbar onLoginClick={openLoginModal} onRegisterClick={openRegisterModal} />
+
+            {/* Герой секция */}
             <section className={styles.hero}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>
@@ -19,7 +39,7 @@ const MainPage = () => {
                         Безопасно, быстро и профессионально.
                     </p>
                     <div className={styles.heroButtons}>
-                        <button className={styles.primaryBtn}>
+                        <button className={styles.primaryBtn} onClick={openRegisterModal}>
                             Начать торговлю <FaArrowRight className={styles.btnIcon} />
                         </button>
                         <button className={styles.secondaryBtn}>
@@ -70,6 +90,8 @@ const MainPage = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Фичи секция */}
             <section className={styles.features}>
                 <div className={styles.featuresContainer}>
                     <h2 className={styles.sectionTitle}>Почему выбирают нас</h2>
@@ -120,19 +142,30 @@ const MainPage = () => {
                     </div>
                 </div>
             </section>
-            <Market />
+
+            {/* CTA секция */}
             <section className={styles.cta}>
                 <div className={styles.ctaContainer}>
                     <h2 className={styles.ctaTitle}>Готовы начать свой путь в криптовалютах?</h2>
                     <p className={styles.ctaDescription}>
                         Присоединяйтесь к тысячам трейдеров, которые уже доверяют нам свои активы
                     </p>
-                    <button className={styles.ctaBtn}>
+                    <button className={styles.ctaBtn} onClick={openRegisterModal}>
                         Создать аккаунт <FaArrowRight className={styles.btnIcon} />
                     </button>
                 </div>
             </section>
-           <Footer />
+
+            {/* Футер */}
+            <Footer />
+
+            {/* Модальное окно авторизации */}
+            <AuthModal
+                isOpen={isAuthModalOpen}
+                onClose={closeAuthModal}
+                mode={authMode}
+                setMode={setAuthMode}
+            />
         </div>
     );
 };
