@@ -1,0 +1,119 @@
+/* Навигация */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.navContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoIcon {
+    color: #ff7e00;
+    font-size: 28px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.logoHighlight {
+    color: #ff7e00;
+}
+
+.navMenu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navItem {
+    position: relative;
+}
+
+.navLink {
+    color: #b8b8b8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff7e00;
+    transition: width 0.3s ease;
+}
+
+.navLink:hover {
+    color: #ffffff;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.navButtons {
+    display: flex;
+    gap: 15px;
+}
+
+.loginBtn {
+    background-color: transparent;
+    border: 1px solid #ff7e00;
+    color: #ff7e00;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.loginBtn:hover {
+    background-color: rgba(255, 126, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.registerBtn {
+    background-color: #ff7e00;
+    border: none;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.registerBtn:hover {
+    background-color: #ff9a33;
+    transform: translateY(-2px);
+}

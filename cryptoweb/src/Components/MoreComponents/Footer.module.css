@@ -1,0 +1,116 @@
+/* Футер */
+.footer {
+    padding: 60px 20px 30px;
+    background-color: #0a0a0a;
+    border-top: 1px solid #222;
+}
+
+.footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footerLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.logoIcon {
+    color: #ff7e00;
+    font-size: 28px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.logoHighlight {
+    color: #ff7e00;
+}
+
+.footerLinks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footerColumn {
+
+}
+
+.footerTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.footerList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footerLink {
+    color: #b8b8b8;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: #ff7e00;
+}
+
+.footerBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.copyright {
+    color: #666;
+    font-size: 14px;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 15px;
+}
+
+.socialIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #b8b8b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+    background-color: rgba(255, 126, 0, 0.2);
+    color: #ff7e00;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .footerBottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}

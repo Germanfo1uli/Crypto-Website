@@ -1,0 +1,506 @@
+/* Рынок криптовалют */
+.market {
+    padding: 80px 20px;
+    background-color: #111111;
+}
+
+.marketContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.marketHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.marketTitle {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.marketDescription {
+    font-size: 18px;
+    color: #b8b8b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.marketContent {
+
+}
+
+.marketControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.searchBox {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #ff7e00;
+    box-shadow: 0 0 0 2px rgba(255, 126, 0, 0.2);
+}
+
+.filterButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.filterBtn, .filterBtnActive {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterBtn {
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #b8b8b8;
+}
+
+.filterBtn:hover {
+    border-color: #ff7e00;
+    color: #ff7e00;
+}
+
+.filterBtnActive {
+    background-color: #ff7e00;
+    border: none;
+    color: #ffffff;
+}
+
+.marketGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+}
+
+.cryptoList {
+    background-color: #1a1a1a;
+    border-radius: 16px;
+    border: 1px solid #222;
+    overflow: hidden;
+}
+
+.listHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 15px 20px;
+    background-color: #222;
+    font-weight: 600;
+    color: #b8b8b8;
+    font-size: 14px;
+}
+
+.listHeaderCell {
+
+}
+
+.listBody {
+
+}
+
+.listRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 15px 20px;
+    border-bottom: 1px solid #222;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.listRow:last-child {
+    border-bottom: none;
+}
+
+.listRow:hover {
+    background-color: #222;
+}
+
+.activeRow {
+    background-color: rgba(255, 126, 0, 0.1);
+    border-left: 3px solid #ff7e00;
+}
+
+.listCell {
+    display: flex;
+    align-items: center;
+}
+
+.cryptoInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cryptoIconContainer {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+}
+
+.cryptoName {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.cryptoSymbol {
+    font-size: 14px;
+    color: #666;
+}
+
+.cryptoPrice {
+    font-weight: 600;
+}
+
+.cryptoChange {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.positive {
+    color: #4dff88;
+}
+
+.negative {
+    color: #ff4d4d;
+}
+
+.miniChart {
+    display: flex;
+    align-items: flex-end;
+    height: 30px;
+    gap: 3px;
+}
+
+.miniChartBar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+}
+
+.cryptoDetail {
+    background-color: #1a1a1a;
+    border-radius: 16px;
+    border: 1px solid #222;
+    padding: 25px;
+}
+
+.detailHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.detailTitleContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.detailIconContainer {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+    font-size: 24px;
+}
+
+.detailName {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.detailSymbol {
+    font-size: 16px;
+    color: #666;
+}
+
+.detailPriceContainer {
+    text-align: right;
+}
+
+.detailPrice {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.detailChange {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.detailChart {
+    margin-bottom: 25px;
+}
+
+.chartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.chartTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.chartPeriods {
+    display: flex;
+    gap: 8px;
+}
+
+.periodBtn, .periodBtnActive {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.periodBtn {
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #b8b8b8;
+}
+
+.periodBtn:hover {
+    border-color: #ff7e00;
+    color: #ff7e00;
+}
+
+.periodBtnActive {
+    background-color: #ff7e00;
+    border: none;
+    color: #ffffff;
+}
+
+.chartContainer {
+    height: 250px;
+    position: relative;
+}
+
+.chartPlaceholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #0a0a0a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chartGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gridLine {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.05);
+    position: absolute;
+    width: 100%;
+}
+
+.gridLine:nth-child(1) {
+    top: 20%;
+}
+
+.gridLine:nth-child(2) {
+    top: 40%;
+}
+
+.gridLine:nth-child(3) {
+    top: 60%;
+}
+
+.gridLine:nth-child(4) {
+    top: 80%;
+}
+
+.chartLine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.chartArea {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(255, 126, 0, 0.3), rgba(255, 126, 0, 0));
+    clip-path: polygon(
+            0% 100%,
+            0% 60%,
+            10% 50%,
+            20% 65%,
+            30% 45%,
+            40% 30%,
+            50% 40%,
+            60% 25%,
+            70% 35%,
+            80% 20%,
+            90% 30%,
+            100% 15%,
+            100% 100%
+    );
+}
+
+.detailStats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.statRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    background-color: #222;
+    border-radius: 8px;
+}
+
+.statLabel {
+    color: #b8b8b8;
+    font-size: 14px;
+}
+
+.statValue {
+    font-weight: 600;
+}
+
+.detailActions {
+    display: flex;
+    gap: 15px;
+}
+
+.buyBtn, .sellBtn {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buyBtn {
+    background-color: #4dff88;
+    border: none;
+    color: #0a0a0a;
+}
+
+.buyBtn:hover {
+    background-color: #66ff99;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(77, 255, 136, 0.3);
+}
+
+.sellBtn {
+    background-color: transparent;
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+}
+
+.sellBtn:hover {
+    background-color: rgba(255, 77, 77, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .marketGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .cryptoList {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .marketControls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchBox {
+        max-width: none;
+    }
+
+    .filterButtons {
+        justify-content: center;
+    }
+
+    .detailStats {
+        grid-template-columns: 1fr;
+    }
+
+    .detailActions {
+        flex-direction: column;
+    }
+}
