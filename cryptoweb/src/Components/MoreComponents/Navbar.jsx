@@ -13,10 +13,10 @@ const Navbar = ({ onLoginClick, onRegisterClick }) => {
 
                 <ul className={styles.navMenu}>
                     <li className={styles.navItem}>
-                        <a href="#" className={styles.navLink}>Главная</a>
+                        <a href="/" className={styles.navLink}>Главная</a>
                     </li>
                     <li className={styles.navItem}>
-                        <a href="#" className={styles.navLink}>Торговля</a>
+                        <a href="/trade" className={styles.navLink}>Торговля</a>
                     </li>
                     <li className={styles.navItem}>
                         <a href="#" className={styles.navLink}>Кошелек</a>

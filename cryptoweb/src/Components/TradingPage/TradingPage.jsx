@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FaBitcoin, FaEthereum, FaChartLine, FaArrowUp, FaArrowDown, FaExchangeAlt, FaSearch, FaFilter, FaStar, FaCog, FaWallet, FaDollarSign, FaEuroSign, FaPoundSign, FaYenSign } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import {
+    ResponsiveContainer, ComposedChart,
+    XAxis, YAxis, CartesianGrid, Tooltip,  Scatter
+} from 'recharts';
 import styles from './TradingPage.module.css';
 import Navbar from "../MoreComponents/Navbar";
 import Footer from "../MoreComponents/Footer";
@@ -13,7 +17,7 @@ const TradingPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [timeRange, setTimeRange] = useState('1d');
 
-    // Данные криптовалют
+
     const cryptoData = [
         { id: 'BTC', name: 'Bitcoin', symbol: 'BTC', price: 42568.32, change24h: 2.4, volume: 28456789012, marketCap: 832456789012 },
         { id: 'ETH', name: 'Ethereum', symbol: 'ETH', price: 2845.75, change24h: 5.2, volume: 15678901234, marketCap: 342567890123 },
@@ -25,13 +29,49 @@ const TradingPage = () => {
         { id: 'DOGE', name: 'Dogecoin', symbol: 'DOGE', price: 0.08, change24h: 12.3, volume: 3456789012, marketCap: 11234567890 }
     ];
 
-    // Данные для графика (имитация)
-    const chartData = {
-        '1h': [42100, 42200, 42300, 42400, 42500, 42600, 42700, 42800, 42900, 43000, 42900, 42800, 42700, 42600, 42500, 42400, 42500, 42600, 42700, 42800],
-        '4h': [42000, 42200, 42400, 42600, 42800, 43000, 43200, 43400, 43200, 43000, 42800, 42600, 42400, 42200, 42000, 42200, 42400, 42600, 42800, 43000],
-        '1d': [40000, 40500, 41000, 41500, 42000, 42500, 43000, 43500, 44000, 43500, 43000, 42500, 42000, 41500, 41000, 41500, 42000, 42500, 43000, 43500],
-        '1w': [35000, 36000, 37000, 38000, 39000, 40000, 41000, 42000, 43000, 44000, 43000, 42000, 41000, 40000, 39000, 40000, 41000, 42000, 43000, 44000]
+
+    const generateCandlestickData = (basePrice, count = 30) => {
+        const data = [];
+        let currentPrice = basePrice;
+        const now = new Date();
+
+        for (let i = count - 1; i >= 0; i--) {
+            const date = new Date(now);
+            date.setHours(date.getHours() - i);
+
+            // Генерируем случайные значения для OHLC
+            const open = currentPrice;
+            const change = (Math.random() - 0.5) * 0.05; // Изменение до 5%
+            const close = open * (1 + change);
+
+            // Генерируем максимум и минимум
+            const high = Math.max(open, close) * (1 + Math.random() * 0.02);
+            const low = Math.min(open, close) * (1 - Math.random() * 0.02);
+
+            data.push({
+                date: date.toISOString(),
+                time: date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                open: parseFloat(open.toFixed(2)),
+                high: parseFloat(high.toFixed(2)),
+                low: parseFloat(low.toFixed(2)),
+                close: parseFloat(close.toFixed(2)),
+                fullDate: date
+            });
+
+            currentPrice = close;
+        }
+
+        return data;
     };
+
+    // Данные для графика (свечи)
+    const [candlestickData, setCandlestickData] = useState([]);
+
+    // Генерируем данные при монтировании компонента и при изменении выбранной криптовалюты
+    useEffect(() => {
+        const currentCrypto = cryptoData.find(crypto => crypto.id === selectedCrypto) || cryptoData[0];
+        setCandlestickData(generateCandlestickData(currentCrypto.price));
+    }, [selectedCrypto]);
 
     // Данные для аукционов
     const auctionData = [
@@ -105,6 +145,103 @@ const TradingPage = () => {
         { id: '1w', label: '1н' }
     ];
 
+
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            const data = payload[0].payload;
+            const isPositive = data.close >= data.open;
+
+            return (
+                <div className={styles.customTooltip}>
+                    <p className={styles.tooltipTime}>{data.fullDate.toLocaleString()}</p>
+                    <div className={styles.tooltipPrices}>
+                        <div className={styles.tooltipPriceRow}>
+                            <span className={styles.tooltipLabel}>Открытие:</span>
+                            <span className={styles.tooltipValue}>${data.open.toLocaleString()}</span>
+                        </div>
+                        <div className={styles.tooltipPriceRow}>
+                            <span className={styles.tooltipLabel}>Максимум:</span>
+                            <span className={styles.tooltipValue}>${data.high.toLocaleString()}</span>
+                        </div>
+                        <div className={styles.tooltipPriceRow}>
+                            <span className={styles.tooltipLabel}>Минимум:</span>
+                            <span className={styles.tooltipValue}>${data.low.toLocaleString()}</span>
+                        </div>
+                        <div className={styles.tooltipPriceRow}>
+                            <span className={styles.tooltipLabel}>Закрытие:</span>
+                            <span className={`${styles.tooltipValue} ${isPositive ? styles.positive : styles.negative}`}>
+                                ${data.close.toLocaleString()}
+                            </span>
+                        </div>
+                        <div className={styles.tooltipPriceRow}>
+                            <span className={styles.tooltipLabel}>Изменение:</span>
+                            <span className={`${styles.tooltipValue} ${isPositive ? styles.positive : styles.negative}`}>
+                                {isPositive ? '+' : ''}{((data.close - data.open) / data.open * 100).toFixed(2)}%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        return null;
+    };
+
+
+    const Candlestick = (props) => {
+        const { cx, cy, payload } = props;
+        const { open, close, high, low } = payload;
+        const isPositive = close >= open;
+
+        // Цвета для бычьих и медвежьих свечей
+        const bullishColor = '#e6b366'; // Теплый золотисто-оранжевый
+        const bearishColor = '#d2695e'; // Теплый красно-коричневый
+
+        const color = isPositive ? bullishColor : bearishColor;
+
+        // Рассчитываем размеры и позиции
+        const maxPrice = Math.max(high, low);
+        const minPrice = Math.min(high, low);
+        const priceRange = maxPrice - minPrice || 1; // Избегаем деления на ноль
+
+        // Высота линии максимума/минимума
+        const lineHeight = ((high - low) / priceRange) * 50;
+
+        // Позиция Y для тела свечи
+        const bodyY = cy - ((Math.max(open, close) - minPrice) / priceRange) * 50;
+
+        // Высота тела свечи
+        const bodyHeight = Math.max(1, Math.abs(open - close) / priceRange * 50);
+
+        // Ширина тела свечи
+        const bodyWidth = 12;
+
+        return (
+            <g>
+
+                <line
+                    x1={cx}
+                    y1={cy - lineHeight / 2}
+                    x2={cx}
+                    y2={cy + lineHeight / 2}
+                    stroke={color}
+                    strokeWidth={1.5}
+                />
+
+                <rect
+                    x={cx - bodyWidth / 2}
+                    y={bodyY}
+                    width={bodyWidth}
+                    height={bodyHeight}
+                    fill={color}
+                    stroke={color}
+                    strokeWidth={1.5}
+                    rx={1}
+                    opacity={0.8}
+                />
+            </g>
+        );
+    };
+
     return (
         <div className={styles.tradingContainer}>
             <Navbar/>
@@ -115,9 +252,7 @@ const TradingPage = () => {
                 </div>
             </div>
 
-            {/* Основной контент */}
             <div className={styles.mainContent}>
-                {/* Левая боковая панель со списком криптовалют */}
                 <div className={styles.leftSidebar}>
                     <div className={styles.searchContainer}>
                         <div className={styles.searchBox}>
@@ -172,9 +307,8 @@ const TradingPage = () => {
                     </div>
                 </div>
 
-                {/* Центральная область с графиком и торгами */}
                 <div className={styles.centerContent}>
-                    {/* Навигация табов */}
+
                     <div className={styles.tabsNavigation}>
                         {tabs.map(tab => (
                             <button
@@ -188,7 +322,6 @@ const TradingPage = () => {
                         ))}
                     </div>
 
-                    {/* Информация о выбранной криптовалюте */}
                     <div className={styles.cryptoInfoHeader}>
                         <div className={styles.cryptoMainInfo}>
                             <div className={styles.cryptoHeaderIcon}>
@@ -222,7 +355,6 @@ const TradingPage = () => {
                         </div>
                     </div>
 
-                    {/* График */}
                     <div className={styles.chartContainer}>
                         <div className={styles.chartHeader}>
                             <h3 className={styles.chartTitle}>График цены {currentCrypto.name}</h3>
@@ -241,34 +373,41 @@ const TradingPage = () => {
 
                         <div className={styles.chart}>
                             <div className={styles.chartArea}>
-                                {/* Имитация графика */}
-                                <div className={styles.chartBars}>
-                                    {chartData[timeRange].map((value, index) => {
-                                        const maxValue = Math.max(...chartData[timeRange]);
-                                        const minValue = Math.min(...chartData[timeRange]);
-                                        const height = ((value - minValue) / (maxValue - minValue)) * 100;
-
-                                        return (
-                                            <div
-                                                key={index}
-                                                className={styles.chartBar}
-                                                style={{ height: `${height}%` }}
-                                            ></div>
-                                        );
-                                    })}
-                                </div>
-
-                                {/* Текущая цена на графике */}
-                                <div className={styles.currentPriceLine}>
-                                    <div className={styles.currentPriceLabel}>
-                                        ${currentCrypto.price.toLocaleString()}
-                                    </div>
-                                </div>
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <ComposedChart
+                                        data={candlestickData}
+                                        margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
+                                    >
+                                        <CartesianGrid
+                                            strokeDasharray="3 3"
+                                            stroke="rgba(255, 255, 255, 0.03)"
+                                            horizontal={true}
+                                            vertical={false}
+                                        />
+                                        <XAxis
+                                            dataKey="time"
+                                            axisLine={false}
+                                            tickLine={false}
+                                            tick={{ fill: '#666', fontSize: 12 }}
+                                        />
+                                        <YAxis
+                                            domain={['dataMin - 100', 'dataMax + 100']}
+                                            orientation="right"
+                                            axisLine={false}
+                                            tickLine={false}
+                                            tick={{ fill: '#666', fontSize: 12 }}
+                                            tickFormatter={(value) => `$${value.toLocaleString()}`}
+                                        />
+                                        <Tooltip content={<CustomTooltip />} />
+                                        <Scatter
+                                            dataKey="close"
+                                            shape={<Candlestick />}
+                                        />
+                                    </ComposedChart>
+                                </ResponsiveContainer>
                             </div>
                         </div>
                     </div>
-
-                    {/* Торговая панель */}
                     <div className={styles.tradingPanel}>
                         <div className={styles.tradeTypeSelector}>
                             <button
@@ -327,7 +466,6 @@ const TradingPage = () => {
                     </div>
                 </div>
 
-                {/* Правая боковая панель с ордерами */}
                 <div className={styles.rightSidebar}>
                     <div className={styles.orderBook}>
                         <h3 className={styles.orderBookTitle}>Стакан ордеров</h3>

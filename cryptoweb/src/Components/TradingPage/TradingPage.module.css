@@ -497,6 +497,7 @@
     border-radius: 12px;
     border: 1px solid #222;
     padding: 20px;
+    margin-bottom: 2rem;
 }
 
 .tradeTypeSelector {
@@ -820,4 +821,185 @@
         width: 100%;
         justify-content: space-between;
     }
+}
+/* Стили для кастомной всплывающей подсказки графика */
+.customTooltip {
+    background-color: rgba(26, 26, 26, 0.95);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    min-width: 180px;
+    z-index: 1000;
+}
+
+.tooltipTime {
+    color: #b8b8b8;
+    font-size: 12px;
+    margin: 0 0 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+}
+
+.tooltipPrices {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tooltipPriceRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tooltipLabel {
+    color: #999;
+    font-size: 12px;
+}
+
+.tooltipValue {
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.positive {
+    color: #e6b366; /* Теплый золотистый для роста */
+}
+
+.negative {
+    color: #d2695e; /* Теплый красно-коричневый для падения */
+}
+
+/* Обновленные стили для контейнера графика */
+.chart {
+    height: 400px;
+    position: relative;
+    background-color: #0a0a0a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chartArea {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Стили для свечей на графике */
+.recharts-scatter {
+    cursor: pointer;
+}
+
+.recharts-tooltip-cursor {
+    stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Стили для активных свечей при наведении */
+.recharts-active-dot {
+    r: 6 !important;
+    stroke-width: 0 !important;
+}
+
+/* Улучшенные стили для кнопок периода времени */
+.timeRangeButton {
+    background-color: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #b8b8b8;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeRangeButton:hover {
+    border-color: #333;
+    color: #ffffff;
+}
+
+.activeTimeRange {
+    background-color: #e6b366;
+    border-color: #e6b366;
+    color: #0a0a0a;
+}
+
+/* Улучшенные стили для контейнера графика */
+.chartContainer {
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.chartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.chartTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.timeRangeSelector {
+    display: flex;
+    gap: 5px;
+}
+
+/* Улучшенные стили для кнопок покупки/продажи */
+.buyActive {
+    background-color: rgba(230, 179, 102, 0.2);
+    color: #e6b366;
+}
+
+.sellActive {
+    background-color: rgba(210, 105, 94, 0.2);
+    color: #d2695e;
+}
+
+.buyButton {
+    background-color: #e6b366;
+    color: #0a0a0a;
+}
+
+.buyButton:hover {
+    background-color: #f0c77f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 179, 102, 0.3);
+}
+
+.sellButton {
+    background-color: #d2695e;
+    color: #ffffff;
+}
+
+.sellButton:hover {
+    background-color: #e07a6f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(210, 105, 94, 0.3);
+}
+
+/* Стили для ордеров */
+.orderPriceSell {
+    color: #d2695e;
+}
+
+.orderPriceBuy {
+    color: #e6b366;
+}
+
+/* Стили для изменений цены */
+.positive {
+    color: #e6b366;
+}
+
+.negative {
+    color: #d2695e;
 }
