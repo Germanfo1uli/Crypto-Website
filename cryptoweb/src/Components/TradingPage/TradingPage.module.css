@@ -1,0 +1,823 @@
+/* Контейнер страницы */
+.tradingContainer {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 80px 20px 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Шапка страницы */
+.tradingHeader {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+}
+
+.headerBack {
+    margin-bottom: 20px;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #b8b8b8;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.backButton:hover {
+    color: #ff7e00;
+}
+
+.backIcon {
+    transform: rotate(90deg);
+}
+
+.headerTitle h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.headerTitle p {
+    font-size: 18px;
+    color: #b8b8b8;
+}
+
+/* Основной контент */
+.mainContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+}
+
+/* Левая боковая панель */
+.leftSidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.searchBox {
+    flex: 1;
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.searchBox input {
+    width: 100%;
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 10px 10px 10px 36px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.searchBox input:focus {
+    outline: none;
+    border-color: #ff7e00;
+    box-shadow: 0 0 0 2px rgba(255, 126, 0, 0.2);
+}
+
+.filterButton {
+    width: 40px;
+    height: 40px;
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    color: #b8b8b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterButton:hover {
+    border-color: #ff7e00;
+    color: #ff7e00;
+}
+
+.cryptoList {
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+    overflow: hidden;
+}
+
+.cryptoListHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    background-color: #0a0a0a;
+    border-bottom: 1px solid #222;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+}
+
+.cryptoListItems {
+    max-height: 600px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #111;
+}
+
+.cryptoListItems::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cryptoListItems::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.cryptoListItems::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 3px;
+}
+
+.cryptoListItems::-webkit-scrollbar-thumb:hover {
+    background-color: #444;
+}
+
+.cryptoListItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #222;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cryptoListItem:hover {
+    background-color: rgba(255, 126, 0, 0.05);
+}
+
+.cryptoListItem:last-child {
+    border-bottom: none;
+}
+
+.selectedCrypto {
+    background-color: rgba(255, 126, 0, 0.1);
+    border-left: 3px solid #ff7e00;
+}
+
+.cryptoInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.cryptoIcon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+    font-size: 14px;
+}
+
+.genericIcon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.cryptoName {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cryptoSymbol {
+    font-size: 12px;
+    color: #666;
+}
+
+.cryptoPrice {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    width: 80px;
+}
+
+.cryptoChange {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    width: 50px;
+    text-align: right;
+}
+
+.positive {
+    color: #4dff88;
+}
+
+.negative {
+    color: #ff4d4d;
+}
+
+/* Центральная область */
+.centerContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Навигация табов */
+.tabsNavigation {
+    display: flex;
+    border-bottom: 1px solid #222;
+    margin-bottom: 5px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.tabsNavigation::-webkit-scrollbar {
+    display: none;
+}
+
+.tabButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: #b8b8b8;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+.tabButton::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.activeTab {
+    color: #ffffff;
+}
+
+.activeTab::after {
+    background-color: #ff7e00;
+}
+
+.tabButton:hover {
+    color: #ffffff;
+}
+
+.tabIcon {
+    font-size: 18px;
+}
+
+/* Информация о выбранной криптовалюте */
+.cryptoInfoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+}
+
+.cryptoMainInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cryptoHeaderIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+    font-size: 20px;
+}
+
+.genericIconLarge {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.cryptoNameLarge {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.cryptoSymbolLarge {
+    font-size: 16px;
+    color: #b8b8b8;
+    margin-left: 5px;
+}
+
+.cryptoPriceLarge {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.cryptoStats {
+    display: flex;
+    gap: 20px;
+}
+
+.cryptoStat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.statLabel {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.statValue {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* График */
+.chartContainer {
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.chartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.chartTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.timeRangeSelector {
+    display: flex;
+    gap: 5px;
+}
+
+.timeRangeButton {
+    background-color: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #b8b8b8;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeRangeButton:hover {
+    border-color: #333;
+    color: #ffffff;
+}
+
+.activeTimeRange {
+    background-color: #ff7e00;
+    border-color: #ff7e00;
+    color: #ffffff;
+}
+
+.chart {
+    height: 300px;
+    position: relative;
+}
+
+.chartArea {
+    height: 100%;
+    position: relative;
+}
+
+.chartBars {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    gap: 4px;
+    padding: 0 10px;
+}
+
+.chartBar {
+    flex: 1;
+    background: linear-gradient(to top, #ff7e00, rgba(255, 126, 0, 0.3));
+    border-radius: 3px 3px 0 0;
+    min-height: 5%;
+    transition: height 0.5s ease;
+}
+
+.currentPriceLine {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+}
+
+.currentPriceLabel {
+    position: absolute;
+    right: 10px;
+    top: -10px;
+    background-color: #ff7e00;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Торговая панель */
+.tradingPanel {
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+    padding: 20px;
+}
+
+.tradeTypeSelector {
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #222;
+}
+
+.tradeTypeButton {
+    flex: 1;
+    background-color: #0a0a0a;
+    border: none;
+    padding: 12px;
+    color: #b8b8b8;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buyActive {
+    background-color: rgba(77, 255, 136, 0.1);
+    color: #4dff88;
+}
+
+.sellActive {
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
+}
+
+.tradeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup label {
+    font-size: 14px;
+    color: #b8b8b8;
+}
+
+.formGroup input {
+    background-color: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.formGroup input:focus {
+    outline: none;
+    border-color: #ff7e00;
+    box-shadow: 0 0 0 2px rgba(255, 126, 0, 0.2);
+}
+
+.submitButton {
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 10px;
+}
+
+.buyButton {
+    background-color: #4dff88;
+    color: #0a0a0a;
+}
+
+.buyButton:hover {
+    background-color: #66ff99;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(77, 255, 136, 0.3);
+}
+
+.sellButton {
+    background-color: #ff4d4d;
+    color: #ffffff;
+}
+
+.sellButton:hover {
+    background-color: #ff6666;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+}
+
+/* Правая боковая панель */
+.rightSidebar {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.orderBook {
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+    padding: 20px;
+}
+
+.orderBookTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.orderBookHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #222;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+}
+
+.orderBookSells, .orderBookBuys {
+    margin: 10px 0;
+}
+
+.orderBookSell, .orderBookBuy {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.orderPriceSell {
+    color: #ff4d4d;
+}
+
+.orderPriceBuy {
+    color: #4dff88;
+}
+
+.currentPrice {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    font-weight: 600;
+}
+
+.orderBookSummary {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+}
+
+.orderBookSummaryItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.orderBookSummaryItem:last-child {
+    margin-bottom: 0;
+}
+
+/* Аукционы */
+.auctionsPanel {
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+    padding: 20px;
+}
+
+.auctionsTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.auctionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auctionCard {
+    background-color: #0a0a0a;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #222;
+    transition: all 0.3s ease;
+}
+
+.auctionCard:hover {
+    border-color: #ff7e00;
+}
+
+.auctionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.auctionCrypto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.auctionEndTime {
+    font-size: 14px;
+    color: #ff7e00;
+    background-color: rgba(255, 126, 0, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.auctionDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.auctionLabel {
+    font-size: 12px;
+    color: #666;
+}
+
+.auctionBidValue {
+    color: #ff7e00;
+    font-weight: 600;
+}
+
+.auctionButton {
+    width: 100%;
+    background-color: rgba(255, 126, 0, 0.1);
+    border: 1px solid rgba(255, 126, 0, 0.2);
+    border-radius: 6px;
+    padding: 10px;
+    color: #ff7e00;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auctionButton:hover {
+    background-color: rgba(255, 126, 0, 0.2);
+    border-color: #ff7e00;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .mainContent {
+        flex-direction: column;
+    }
+
+    .leftSidebar, .rightSidebar {
+        width: 100%;
+    }
+
+    .orderBook {
+        order: 2;
+    }
+
+    .auctionsPanel {
+        order: 3;
+    }
+
+    .centerContent {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .cryptoStats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cryptoMainInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cryptoInfoHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .chartHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .timeRangeSelector {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
