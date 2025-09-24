@@ -1,0 +1,689 @@
+.aboutContainer {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 80px 20px 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+.aboutHeader {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.headerBack {
+    margin-bottom: 30px;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #b8b8b8;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.backButton:hover {
+    color: #ff7e00;
+}
+
+.headerContent {
+    position: relative;
+    padding-top: 40px;
+}
+
+.headerContent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff7e00, #ff9a33);
+    border-radius: 2px;
+}
+
+.headerTitle {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #ffffff, #ff7e00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.headerSubtitle {
+    font-size: 20px;
+    color: #b8b8b8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Миссия компании */
+.missionSection {
+    margin-bottom: 80px;
+}
+
+.missionContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.missionText {
+    flex: 1;
+}
+
+.sectionTitle {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.sectionTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #ff7e00;
+}
+
+.missionDescription {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #b8b8b8;
+    margin-bottom: 20px;
+}
+
+.missionStats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.statCard {
+    background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #222;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.statCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 50%, rgba(255, 126, 0, 0.1) 0%, rgba(255, 126, 0, 0) 70%);
+    z-index: 0;
+}
+
+.statCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: #ff7e00;
+}
+
+.statNumber {
+    font-size: 42px;
+    font-weight: 800;
+    color: #ff7e00;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.statLabel {
+    font-size: 16px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.valuesSection {
+    margin-bottom: 80px;
+}
+
+.valuesContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectionDescription {
+    font-size: 18px;
+    color: #b8b8b8;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.valueCard {
+    background-color: #111;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #222;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.valueCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: #ff7e00;
+}
+
+.valueIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7e00;
+    font-size: 28px;
+    margin: 0 auto 20px;
+}
+
+.valueTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.valueDescription {
+    font-size: 16px;
+    color: #b8b8b8;
+    line-height: 1.5;
+}
+
+/* История компании */
+.historySection {
+    margin-bottom: 80px;
+}
+
+.historyContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #ff7e00, rgba(255, 126, 0, 0.2));
+    border-radius: 2px;
+}
+
+.timelineItem {
+    display: flex;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.timelineItem:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timelineItem:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timelineYear {
+    width: 80px;
+    height: 80px;
+    background-color: #ff7e00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(255, 126, 0, 0.2);
+}
+
+.timelineContent {
+    flex: 1;
+    background-color: #111;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #222;
+    margin: 0 30px;
+    position: relative;
+    animation: slideIn 0.5s ease;
+}
+
+.timelineItem:nth-child(odd) .timelineContent {
+    text-align: right;
+}
+
+.timelineContent::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #111;
+    border-top: 2px solid #222;
+    border-right: 2px solid #222;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.timelineItem:nth-child(odd) .timelineContent::before {
+    left: -10px;
+}
+
+.timelineItem:nth-child(even) .timelineContent::before {
+    right: -10px;
+    transform: translateY(-50%) rotate(225deg);
+}
+
+.timelineTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ff7e00;
+}
+
+.timelineDescription {
+    font-size: 16px;
+    color: #b8b8b8;
+    line-height: 1.5;
+}
+
+/* Наша команда */
+.teamSection {
+    margin-bottom: 80px;
+}
+
+.teamContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.teamGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.teamCard {
+    background-color: #111;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #222;
+    transition: all 0.3s ease;
+}
+
+.teamCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: #ff7e00;
+}
+
+.teamPhoto {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.teamPhoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.teamPhotoPlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff7e00, #ff9a33);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.teamInfo {
+    padding: 25px;
+}
+
+.teamName {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.teamPosition {
+    font-size: 16px;
+    color: #ff7e00;
+    margin-bottom: 15px;
+}
+
+.teamBio {
+    font-size: 14px;
+    color: #b8b8b8;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.teamSocial {
+    display: flex;
+    gap: 12px;
+}
+
+.socialIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 126, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b8b8b8;
+    transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+    background-color: rgba(255, 126, 0, 0.2);
+    color: #ff7e00;
+}
+
+/* Отзывы клиентов */
+.testimonialsSection {
+    margin-bottom: 80px;
+}
+
+.testimonialsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonialsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonialCard {
+    background-color: #111;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #222;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.testimonialCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: #ff7e00;
+}
+
+.testimonialRating {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 15px;
+}
+
+.star {
+    color: #444;
+    font-size: 18px;
+}
+
+.star.filled {
+    color: #ff7e00;
+}
+
+.testimonialContent {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.quoteLeft, .quoteRight {
+    position: absolute;
+    color: rgba(255, 126, 0, 0.2);
+    font-size: 24px;
+}
+
+.quoteLeft {
+    top: -10px;
+    left: -10px;
+}
+
+.quoteRight {
+    bottom: -10px;
+    right: -10px;
+}
+
+.testimonialContent p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #b8b8b8;
+    font-style: italic;
+    padding: 0 10px;
+}
+
+.testimonialAuthor {
+    border-top: 1px solid #222;
+    padding-top: 15px;
+}
+
+.authorName {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.authorPosition {
+    font-size: 14px;
+    color: #b8b8b8;
+}
+
+
+.ctaSection {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 16px;
+    padding: 60px 40px;
+    margin-bottom: 0px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.ctaSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 50%, rgba(255, 126, 0, 0.15) 0%, rgba(255, 126, 0, 0) 70%);
+    z-index: 0;
+}
+
+.ctaContainer {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.ctaTitle {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.ctaDescription {
+    font-size: 18px;
+    color: #b8b8b8;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.ctaButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.ctaButtonPrimary, .ctaButtonSecondary {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctaButtonPrimary {
+    background-color: #ff7e00;
+    border: none;
+    color: #ffffff;
+}
+
+.ctaButtonPrimary:hover {
+    background-color: #ff9a33;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 126, 0, 0.3);
+}
+
+.ctaButtonSecondary {
+    background-color: transparent;
+    border: 1px solid #ff7e00;
+    color: #ff7e00;
+}
+
+.ctaButtonSecondary:hover {
+    background-color: rgba(255, 126, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 992px) {
+    .headerTitle {
+        font-size: 36px;
+    }
+
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timelineItem {
+        flex-direction: row !important;
+        padding-left: 70px;
+    }
+
+    .timelineContent {
+        margin: 0 0 0 30px !important;
+    }
+
+    .timelineContent::before {
+        left: -10px !important;
+        transform: translateY(-50%) rotate(45deg) !important;
+    }
+
+    .timelineContent {
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerTitle {
+        font-size: 28px;
+    }
+
+    .sectionTitle {
+        font-size: 28px;
+    }
+
+    .statNumber {
+        font-size: 32px;
+    }
+
+    .missionStats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .valuesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .teamGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonialsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ctaButtonPrimary, .ctaButtonSecondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}

@@ -22,7 +22,7 @@ const Navbar = ({ onLoginClick, onRegisterClick }) => {
                         <a href="#" className={styles.navLink}>Кошелек</a>
                     </li>
                     <li className={styles.navItem}>
-                        <a href="#" className={styles.navLink}>О нас</a>
+                        <a href="/about" className={styles.navLink}>О нас</a>
                     </li>
                     <li className={styles.navItem}>
                         <a href="#" className={styles.navLink}>Контакты</a>
