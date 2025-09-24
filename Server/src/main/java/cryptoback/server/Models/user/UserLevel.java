@@ -1,4 +1,4 @@
-package cryptoback.server.Models.User;
+package cryptoback.server.models.user;
 
 public enum UserLevel {
     Basic("Базовый"),      // Базовый уровень с лимитом $1000
