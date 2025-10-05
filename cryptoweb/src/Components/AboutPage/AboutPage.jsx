@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FaQuoteLeft, FaQuoteRight, FaTwitter, FaLinkedin, FaEnvelope, FaArrowLeft, FaShieldAlt, FaUsers, FaLightbulb, FaGlobe, FaChartLine } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import styles from './AboutPage.module.css';
@@ -128,6 +128,49 @@ const AboutPage = () => {
         }
     ];
 
+    // Используем useRef для секций, которые должны анимироваться при прокрутке
+    const missionRef = useRef(null);
+    const valuesRef = useRef(null);
+    const historyRef = useRef(null);
+    const teamRef = useRef(null);
+    const testimonialsRef = useRef(null);
+    const ctaRef = useRef(null);
+
+    // Эффект для добавления анимации при прокрутке
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(styles.visible);
+                }
+            });
+        }, {
+            threshold: 0.1, // 10% элемента должно быть видно для запуска анимации
+            rootMargin: '0px 0px -50px 0px' // Немного смещаем точку срабатывания
+        });
+
+        // Наблюдаем за всеми элементами
+        const elements = [
+            missionRef.current,
+            valuesRef.current,
+            historyRef.current,
+            teamRef.current,
+            testimonialsRef.current,
+            ctaRef.current
+        ];
+
+        elements.forEach(el => {
+            if (el) observer.observe(el);
+        });
+
+        // Очищаем наблюдатель при размонтировании компонента
+        return () => {
+            elements.forEach(el => {
+                if (el) observer.unobserve(el);
+            });
+        };
+    }, []);
+
     return (
         <div className={styles.aboutContainer}>
             <Navbar/>
@@ -139,7 +182,9 @@ const AboutPage = () => {
                     </p>
                 </div>
             </div>
-            <section className={styles.missionSection}>
+
+            {/* Секция миссии с анимацией при прокрутке */}
+            <section ref={missionRef} className={`${styles.missionSection} ${styles.fadeInUp}`}>
                 <div className={styles.missionContent}>
                     <div className={styles.missionText}>
                         <h2 className={styles.sectionTitle}>Наша миссия</h2>
@@ -174,7 +219,9 @@ const AboutPage = () => {
                     </div>
                 </div>
             </section>
-            <section className={styles.valuesSection}>
+
+            {/* Секция ценностей с анимацией при прокрутке */}
+            <section ref={valuesRef} className={`${styles.valuesSection} ${styles.fadeInUp}`}>
                 <div className={styles.valuesContainer}>
                     <h2 className={styles.sectionTitle}>Наши ценности</h2>
                     <div className={styles.valuesGrid}>
@@ -190,7 +237,9 @@ const AboutPage = () => {
                     </div>
                 </div>
             </section>
-            <section className={styles.historySection}>
+
+            {/* Секция истории с анимацией при прокрутке */}
+            <section ref={historyRef} className={`${styles.historySection} ${styles.fadeInUp}`}>
                 <div className={styles.historyContainer}>
                     <h2 className={styles.sectionTitle}>Наша история</h2>
                     <p className={styles.sectionDescription}>
@@ -210,7 +259,9 @@ const AboutPage = () => {
                     </div>
                 </div>
             </section>
-            <section className={styles.teamSection}>
+
+            {/* Секция команды с анимацией при прокрутке */}
+            <section ref={teamRef} className={`${styles.teamSection} ${styles.fadeInUp}`}>
                 <div className={styles.teamContainer}>
                     <h2 className={styles.sectionTitle}>Наша команда</h2>
                     <div className={styles.teamGrid}>
@@ -254,7 +305,9 @@ const AboutPage = () => {
                     </div>
                 </div>
             </section>
-            <section className={styles.testimonialsSection}>
+
+            {/* Секция отзывов с анимацией при прокрутке */}
+            <section ref={testimonialsRef} className={`${styles.testimonialsSection} ${styles.fadeInUp}`}>
                 <div className={styles.testimonialsContainer}>
                     <h2 className={styles.sectionTitle}>Что говорят наши клиенты</h2>
                     <div className={styles.testimonialsGrid}>
@@ -281,7 +334,9 @@ const AboutPage = () => {
                     </div>
                 </div>
             </section>
-            <section className={styles.ctaSection}>
+
+            {/* Секция CTA с анимацией при прокрутке */}
+            <section ref={ctaRef} className={`${styles.ctaSection} ${styles.fadeInUp}`}>
                 <div className={styles.ctaContainer}>
                     <h2 className={styles.ctaTitle}>Присоединяйтесь к CRYPTOVAULT сегодня</h2>
                     <p className={styles.ctaDescription}>

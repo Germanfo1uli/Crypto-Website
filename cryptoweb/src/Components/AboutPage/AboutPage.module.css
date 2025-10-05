@@ -4,31 +4,12 @@
     color: #ffffff;
     min-height: 100vh;
     padding: 80px 20px 40px;
-    animation: fadeIn 0.5s ease;
 }
 
 .aboutHeader {
     max-width: 1200px;
     margin: 0 auto 60px;
     text-align: center;
-}
-
-.headerBack {
-    margin-bottom: 30px;
-}
-
-.backButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #b8b8b8;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-.backButton:hover {
-    color: #ff7e00;
 }
 
 .headerContent {
@@ -68,6 +49,14 @@
 /* Миссия компании */
 .missionSection {
     margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.missionSection.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .missionContent {
@@ -159,6 +148,15 @@
 
 .valuesSection {
     margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: 0.1s;
+}
+
+.valuesSection.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .valuesContainer {
@@ -187,12 +185,35 @@
     border: 1px solid #222;
     text-align: center;
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .valueCard:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     border-color: #ff7e00;
+}
+
+.valuesSection.visible .valueCard {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.valuesSection.visible .valueCard:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.valuesSection.visible .valueCard:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.valuesSection.visible .valueCard:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.valuesSection.visible .valueCard:nth-child(4) {
+    transition-delay: 0.4s;
 }
 
 .valueIcon {
@@ -223,6 +244,15 @@
 /* История компании */
 .historySection {
     margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: 0.2s;
+}
+
+.historySection.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .historyContainer {
@@ -251,6 +281,33 @@
     display: flex;
     margin-bottom: 50px;
     position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.historySection.visible .timelineItem {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.historySection.visible .timelineItem:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.historySection.visible .timelineItem:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.historySection.visible .timelineItem:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.historySection.visible .timelineItem:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.historySection.visible .timelineItem:nth-child(5) {
+    transition-delay: 0.5s;
 }
 
 .timelineItem:nth-child(odd) {
@@ -285,7 +342,6 @@
     border: 1px solid #222;
     margin: 0 30px;
     position: relative;
-    animation: slideIn 0.5s ease;
 }
 
 .timelineItem:nth-child(odd) .timelineContent {
@@ -329,6 +385,15 @@
 /* Наша команда */
 .teamSection {
     margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: 0.3s;
+}
+
+.teamSection.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .teamContainer {
@@ -348,12 +413,31 @@
     overflow: hidden;
     border: 1px solid #222;
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .teamCard:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     border-color: #ff7e00;
+}
+
+.teamSection.visible .teamCard {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.teamSection.visible .teamCard:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.teamSection.visible .teamCard:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.teamSection.visible .teamCard:nth-child(3) {
+    transition-delay: 0.3s;
 }
 
 .teamPhoto {
@@ -428,6 +512,15 @@
 /* Отзывы клиентов */
 .testimonialsSection {
     margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: 0.4s;
+}
+
+.testimonialsSection.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .testimonialsContainer {
@@ -448,12 +541,31 @@
     border: 1px solid #222;
     position: relative;
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .testimonialCard:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     border-color: #ff7e00;
+}
+
+.testimonialsSection.visible .testimonialCard {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonialsSection.visible .testimonialCard:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.testimonialsSection.visible .testimonialCard:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.testimonialsSection.visible .testimonialCard:nth-child(3) {
+    transition-delay: 0.3s;
 }
 
 .testimonialRating {
@@ -516,7 +628,6 @@
     color: #b8b8b8;
 }
 
-
 .ctaSection {
     background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
     border-radius: 16px;
@@ -525,6 +636,15 @@
     position: relative;
     overflow: hidden;
     text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: 0.5s;
+}
+
+.ctaSection.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .ctaSection::before {
@@ -600,6 +720,7 @@
     transform: translateY(-3px);
 }
 
+/* Анимации */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -618,6 +739,17 @@
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.fadeInUp {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fadeInUp.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (max-width: 992px) {
