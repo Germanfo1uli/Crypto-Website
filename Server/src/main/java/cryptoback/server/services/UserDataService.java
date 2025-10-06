@@ -24,4 +24,25 @@ public class UserDataService {
         }
         return CompletableFuture.completedFuture(repository.save(user));
     }
+
+    @Async
+    @Transactional
+    public CompletableFuture<UserData> getUserByIdAsync(Long id) {
+        return CompletableFuture.completedFuture(repository.findById(id).orElseThrow(() -> new RuntimeException("User not found")));
+    }
+
+    @Async
+    @Transactional
+    public CompletableFuture<UserData> updateUserAsync(UserData user) {
+        return CompletableFuture.completedFuture(repository.save(user));
+    }
+
+    @Async
+    @Transactional
+    public CompletableFuture<Void> deleteUserAsync(Long id) {
+        repository.deleteById(id);
+        return CompletableFuture.completedFuture(null);
+    }
+
+    
 }

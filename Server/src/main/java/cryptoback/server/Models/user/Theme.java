@@ -9,13 +9,9 @@ public enum Theme {
 
     Theme(String code) {
         this.code = code;
-
     }
 
     public String getCode() {
         return code;
     }
-
-
-
 }

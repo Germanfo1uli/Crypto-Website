@@ -1,10 +1,16 @@
 package cryptoback.server.models.user;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "UserData")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserData {
 
     @Id
@@ -34,7 +40,7 @@ public class UserData {
     private Boolean emailVerified = false;
 
     @Column(name = "createAt", nullable = false)
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 
     @Column(name = "bio", columnDefinition = "TEXT")
     private String bio;
@@ -48,10 +54,6 @@ public class UserData {
     @Enumerated(EnumType.STRING)
     @Column(name = "theme")
     private Theme theme = Theme.Dark;
-
-    public String getUsername() {
-        return this.username;
-    }
 
     //🔗 Навигационные свойства
 
