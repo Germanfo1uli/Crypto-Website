@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,9 +18,6 @@ public class UserData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "username", nullable = false, length = 50, unique = true)
-    private String username;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "level", nullable = false)
@@ -42,20 +41,14 @@ public class UserData {
     @Column(name = "createAt", nullable = false)
     private LocalDateTime createAt = LocalDateTime.now();
 
-    @Column(name = "bio", columnDefinition = "TEXT")
-    private String bio;
-
-    @Column(name = "avatarUrl", length = 255)
-    private String avatarUrl;
-
     @Column(name = "isActive")
     private Boolean isActive = true;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "theme")
-    private Theme theme = Theme.Dark;
+    // Навигационные свойства
 
-    //🔗 Навигационные свойства
+    @OneToOne(mappedBy = "userData", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @ToString.Exclude
+    private UserProfile userProfile;
 
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Wallet> wallets = new ArrayList<>();

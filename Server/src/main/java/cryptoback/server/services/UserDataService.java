@@ -19,8 +19,8 @@ public class UserDataService {
     @Async
     @Transactional
     public CompletableFuture<UserData> createUserAsync(UserData user) {
-        if (user.getUsername() == null || user.getUsername().isEmpty()) {
-            throw new IllegalArgumentException("Username cannot be empty");
+        if (user.getEmail() == null || user.getEmail().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be empty");
         }
         return CompletableFuture.completedFuture(repository.save(user));
     }
@@ -28,7 +28,8 @@ public class UserDataService {
     @Async
     @Transactional
     public CompletableFuture<UserData> getUserByIdAsync(Long id) {
-        return CompletableFuture.completedFuture(repository.findById(id).orElseThrow(() -> new RuntimeException("User not found")));
+        return CompletableFuture.completedFuture(repository.findById(id).orElseThrow(() ->
+                new RuntimeException("User not found")));
     }
 
     @Async
@@ -43,6 +44,4 @@ public class UserDataService {
         repository.deleteById(id);
         return CompletableFuture.completedFuture(null);
     }
-
-    
 }

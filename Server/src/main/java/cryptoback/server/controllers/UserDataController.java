@@ -22,4 +22,22 @@ public class UserDataController {
     {
         return userDataService.createUserAsync(userData);
     }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CompletableFuture<UserData> getUserById(@PathVariable Long id) {
+        return userDataService.getUserByIdAsync(id);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public CompletableFuture<UserData> updateUser(@RequestBody UserData userData) {
+        return userDataService.updateUserAsync(userData);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CompletableFuture<Void> deleteUser(@PathVariable Long id) {
+        return userDataService.deleteUserAsync(id);
+    }
 }
